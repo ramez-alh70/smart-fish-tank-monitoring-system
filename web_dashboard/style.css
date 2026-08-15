@@ -1,0 +1,390 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* التصميم العام للصفحة */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #3740ed 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ======================================
+   HEADER - الرأس
+   ====================================== */
+header {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* شارة الحالة */
+.status-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #ef4444;
+    color: white;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.status-badge.connected {
+    background: #10b981;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ======================================
+   CONNECTION CONFIG - إعدادات الاتصال
+   ====================================== */
+.connection-config {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.connection-config h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.connection-config input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.connection-config button {
+    width: 100%;
+    padding: 12px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.connection-config button:hover {
+    background: #059669;
+}
+
+.note {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* ======================================
+   DASHBOARD - لوحة العرض
+   ====================================== */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* الكروت */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* الأيقونات */
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+/* أيقونة درجة الحرارة - تدرج وردي-أحمر */
+.icon.temp { 
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+}
+
+/* أيقونة مستوى الماء - تدرج أزرق فاتح */
+.icon.water { 
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+}
+
+/* أيقونة العكارة - تدرج أزرق-وردي فاتح */
+.icon.turbidity { 
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
+}
+
+/* أيقونة المضخة - تدرج أزرق-سماوي (جديد) */
+.icon.pump { 
+    background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); 
+}
+
+/* أيقونة LED - تدرج وردي-أصفر */
+.icon.light { 
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); 
+}
+
+/* أيقونة التغذية - تدرج أخضر-سماوي */
+.icon.feed { 
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
+}
+
+/* عناوين وقيم الكروت */
+.card-title {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+}
+
+/* حالات الكروت */
+.card-status {
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* حالة جيدة - أخضر */
+.status-good { 
+    background: #d1fae5; 
+    color: #065f46; 
+}
+
+/* تحذير - أصفر */
+.status-warning { 
+    background: #fef3c7; 
+    color: #92400e; 
+}
+
+/* خطأ - أحمر */
+.status-error { 
+    background: #fee2e2; 
+    color: #991b1b; 
+}
+
+/* ======================================
+   CONTROLS - لوحة التحكم
+   ====================================== */
+.controls {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.controls h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.control-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* الأزرار */
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* زر أساسي - بنفسجي */
+.btn-primary { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+}
+
+/* زر نجاح - أخضر */
+.btn-success { 
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+}
+
+/* زر معلومات - أزرق (للمضخة - جديد) */
+.btn-info { 
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%); 
+}
+
+/* زر تحذير - برتقالي */
+.btn-warning { 
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); 
+}
+
+/* زر خطر - أحمر */
+.btn-danger { 
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); 
+}
+
+/* السلايدر (الإضاءة) */
+.slider-container {
+    margin: 20px 0;
+}
+
+.slider-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+    font-weight: 600;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+/* ======================================
+   FOOTER - التذييل
+   ====================================== */
+footer {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    opacity: 0.8;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* ======================================
+   RESPONSIVE - التصميم المتجاوب للموبايل
+   ====================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    
+    header p {
+        font-size: 1em;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-value {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .controls {
+        padding: 20px;
+    }
+}

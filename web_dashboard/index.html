@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Fish Tank - IoT Aquarium Monitoring</title>
+    
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐠 Smart Fish Tank</h1>
+            <p>IoT Aquarium Monitoring & Control System</p>
+            <div class="status-badge" id="statusBadge">● Disconnected</div>
+        </header>
+
+        <!-- ESP32 Connection Configuration -->
+        <div class="connection-config">
+            <h3>🔗 Connect to ESP32</h3>
+            <div class="note">
+                <strong>Instructions:</strong> Enter your ESP32's IP address below. You can find it in the Arduino Serial Monitor when the ESP32 starts up.
+            </div>
+            <input type="text" id="esp32IP" placeholder="e.g., 192.168.1.100" value="192.168.1.100">
+            <button onclick="connectToESP32()">Connect</button>
+        </div>
+
+        <div class="dashboard">
+            <!-- درجة الحرارة -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon temp">🌡️</div>
+                    <div>
+                        <div class="card-title">Water Temperature</div>
+                    </div>
+                </div>
+                <div class="card-value" id="tempValue">--°C</div>
+                <span class="card-status status-good" id="tempStatus">Waiting...</span>
+            </div>
+
+            <!-- مستوى المياه -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon water">💧</div>
+                    <div>
+                        <div class="card-title">Water Level</div>
+                    </div>
+                </div>
+                <div class="card-value" id="waterValue">--%</div>
+                <span class="card-status status-good" id="waterStatus">Waiting...</span>
+            </div>
+
+            <!-- عكارة المياه -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon turbidity">💎</div>
+                    <div>
+                        <div class="card-title">Water Turbidity</div>
+                    </div>
+                </div>
+                <div class="card-value" id="turbidityValue">-- NTU</div>
+                <span class="card-status status-good" id="turbidityStatus">Waiting...</span>
+            </div>
+
+            <!-- مضخة الأوكسجين - جديد -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon pump">🌊</div>
+                    <div>
+                        <div class="card-title">Oxygen Pump</div>
+                    </div>
+                </div>
+                <div class="card-value" id="pumpValue">OFF</div>
+                <span class="card-status status-good" id="pumpStatus">Ready</span>
+            </div>
+
+            <!-- LED النظام -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon light">💡</div>
+                    <div>
+                        <div class="card-title">System LED</div>
+                    </div>
+                </div>
+                <div class="card-value" id="lightValue">--</div>
+                <span class="card-status status-good" id="lightBrightness">Brightness: --</span>
+            </div>
+
+            <!-- آخر تغذية -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon feed">🍽️</div>
+                    <div>
+                        <div class="card-title">Last Feeding</div>
+                    </div>
+                </div>
+                <div class="card-value" id="feedValue">Never</div>
+                <span class="card-status status-good">Next: <span id="nextFeedText">--</span></span>
+            </div>
+        </div>
+
+        <!-- لوحة التحكم -->
+        <div class="controls">
+            <h2>Control Panel</h2>
+            <div class="control-group">
+                <button class="btn btn-success" onclick="feedNow()" id="feedBtn" disabled>
+                    🐟 Feed Fish
+                </button>
+                <button class="btn btn-info" onclick="togglePump()" id="pumpBtn" disabled>
+                    🌊 Oxygen Pump
+                </button>
+                <button class="btn btn-primary" onclick="toggleLight()" id="lightBtn" disabled>
+                    💡 Toggle LED
+                </button>
+                <button class="btn btn-danger" onclick="refreshData()" id="refreshBtn" disabled>
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div class="slider-container">
+                <label for="brightnessSlider">LED Brightness: <span id="brightnessValue">--</span></label>
+                <input type="range" min="0" max="100" value="80" class="slider" id="brightnessSlider" oninput="updateBrightness(this.value)" disabled>
+            </div>
+        </div>
+
+        <footer>
+            <p>Smart Fish Tank Project © 2025 | ESP32 + Arduino + IoT</p>
+            <p>Automated aquarium monitoring and control system</p>
+        </footer>
+    </div>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
